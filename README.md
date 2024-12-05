@@ -14,22 +14,20 @@
 ## Project Structure
 ```
 MaLAware/
-├── fig                 # Figures
-├── Dockerfile          # Dockerfile to run using docker
-├── FILTER.py           # Pre-processing module
-├── INFERENCEMODULE.py  # Inference module
-├── LICENSE             # License of the project
-├── MALAWARE            # Main script to run the project
-├── README.md           # ReadMe file
-├── requirement.txt     # Requirement file
-├── test.json           # Test input file
-│
-└── Binary/             # Contains direct executable binary
-│  ├── MALAWARE/        # MaLAware binary executable
-│
-└── Dataset/
-   ├── GROUND_TRUTH/    # Ground truth of the prepared dataset
-   └── SANDBOX_REPORT/  # Input sandbox report
+├── Dataset/
+│   ├── GROUND_TRUTH/    # Ground truth of the prepared dataset
+│   └── SANDBOX_REPORT/  # Input sandbox report
+└── fig/                 # Figures
+│   └── MALWARE_LOGO.png # MaLAware logo image
+├── Dockerfile           # Dockerfile to run using docker
+├── FILTER.py            # Pre-processing module
+├── INFERENCEMODULE.py   # Inference module
+├── LICENSE              # License of the project
+├── MALAWARE.py          # Main script to run the project
+├── README.md            # ReadMe file
+├── requirement.txt      # Requirement file
+└── test.json            # Test input file
+
 ```
 
 ## Installation
@@ -74,8 +72,6 @@ You can choose the model that best suits your needs based on the task at hand.
 
 
 ### Runnning MaLAware Using Executabel Binary of the Tool
-
-**Note:** Due to space limiyt in git, you need to download binary executable from this [link](https://drive.google.com/drive/folders/1jSTCKgAqMj2Dqwhqwfu-UYLieaffpJ8b?usp=sharing).
 
 #### Steps
 
