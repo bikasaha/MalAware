@@ -1,6 +1,6 @@
 # MaLAware
 
-![MaLAware Logo](path/to/your/logo.png)
+![MaLAware Logo](fig/MALWARE_LOGO.png)
 
 **MaLAware** is a tool designed to analyze and explain the behavior of malware using advanced large language models (LLMs). It leverages state-of-the-art language models to generate comprehensive, actionable, and human-readable explanations of malicious software behavior. This tool aims to assist cybersecurity analysts in understanding and interpreting complex malware actions.
 
