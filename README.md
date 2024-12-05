@@ -24,8 +24,11 @@ MaLAware/
 ├── test.json           # Test input file
 │
 └── Binary/             # Contains direct executable binary
-    ├── MALAWARE/             # React component source code
-    └── public/          # Static assets
+│  ├── MALAWARE/        # MaLAware binary executable
+│
+└── Dataset/
+   ├── GROUND_TRUTH/    # Ground truth of the prepared dataset
+   └── SANDBOX_REPORT/  # Input sandbox report
 ```
 
 ## Installation
@@ -70,7 +73,7 @@ You can choose the model that best suits your needs based on the task at hand.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/MaLAware.git
+   git clone https://github.com/bikasaha/MaLAware.git
    cd MaLAware/Binary
    ```
 
@@ -89,7 +92,7 @@ You can choose the model that best suits your needs based on the task at hand.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/MaLAware.git
+   git clone https://github.com/bikasaha/MaLAware.git
    cd MaLAware
    ```
 
