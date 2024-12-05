@@ -91,7 +91,10 @@ You can choose the model that best suits your needs based on the task at hand.
    ./MALAWARE --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
    ```
 
-**Note**: This may take a few minutes, as all packages are bundled together in the binary along with model details.
+**Note**
+- You may need to allow executable permission by running `chmod +x BINARY/MALWARE` command.
+- If you get error and suggesting to install `pip install -U bitsandbytes`. Then it is suggestable to create the environemnt using requirement.txt as explained in below section. The binary executable preparation is still in process.
+- This may take a few minutes, as all packages are bundled together in the binary along with model details.
 
 ### Running MaLAware using python script
 
@@ -107,7 +110,7 @@ You can choose the model that best suits your needs based on the task at hand.
 2. Create a virtual environment (optional but recommended):
 
    ```bash
-   python3 -m venv malaware
+   python3.8 -m venv malaware
    source malaware/bin/activate
    ```
 
@@ -115,6 +118,7 @@ You can choose the model that best suits your needs based on the task at hand.
 
    ```bash
    pip install -r requirements.txt
+   pip install -U bitsandbytes
    ```
 
 To run **MaLAware**, use the following command:
