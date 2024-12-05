@@ -91,6 +91,11 @@ You can choose the model that best suits your needs based on the task at hand.
    ./MALAWARE --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
    ```
 
+- **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
+- **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
+- **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
+- **`--hf`** argument: Hugging Face authentication token is required.
+
 **Note**
 - You may need to allow executable permission by running `chmod +x BINARY/MALWARE` command.
 - If you get error and suggesting to install `pip install -U bitsandbytes`. Then it is suggestable to create the environemnt using requirement.txt as explained in below section. The binary executable preparation is still in process.
@@ -110,8 +115,8 @@ You can choose the model that best suits your needs based on the task at hand.
 2. Create a virtual environment (optional but recommended):
 
    ```bash
-   python3.8 -m venv malaware
-   source malaware/bin/activate
+   conda create -n malware python=3.8
+   conda activate malware
    ```
 
 3. Install the required dependencies:
@@ -154,6 +159,18 @@ Example output:
 ## Example Output
 
 After processing a sample, the output will be displayed under the heading **`Generated Summary:`**, providing a comprehensive explanation of the malware's actions and highlighting key behaviors.
+
+### Running MaLAware using python script
+
+#### Steps
+
+1. Ensure you have docker installed and running
+2. Run `docker build -t malaware .` command
+3. Run command:
+
+    ```bash
+    docker run --rm -v $(pwd):/app/data malaware --input /app/data/</path/to/input.json> --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
+    ```
 
 
 ## Contributing
