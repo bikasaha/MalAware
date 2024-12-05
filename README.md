@@ -9,7 +9,24 @@
 - Generates detailed explanations of malware behavior.
 - Provides actionable insights for cybersecurity professionals.
 - Uses multiple large language models (LLMs) for performance comparison.
-- Supports 4-bit quantization for faster inference with lower resource usage..
+- Supports 4-bit quantization for faster inference with lower resource usage.
+
+## Project Structure
+```
+MaLAware/
+├── fig                 # Figures
+├── Dockerfile          # Dockerfile to run using docker
+├── FILTER.py           # Pre-processing
+├── LICENSE             # License of the project
+├── MALAWARE            # Main script to run the project
+├── README.md           # ReadMe file
+├── requirement.txt     # Requirement file
+├── test.json           # Test input file
+│
+└── Binary/             # Contains direct executable binary
+    ├── MALAWARE/             # React component source code
+    └── public/          # Static assets
+```
 
 ## Installation
 
@@ -28,7 +45,46 @@ To ensure smooth performance, please make sure of the following:
 - **CUDA Support**: For faster inference with GPU, **CUDA-enabled GPUs** are recommended. Ensure that the appropriate **NVIDIA drivers** and **CUDA toolkit** are installed for your GPU, with at least 15 GB of RAM (for quantized models). This will accelerate the execution of models that utilize GPU processing.
 - RAM usage may increase in certain cases, such as with large JSON files, increased context length, and similar scenarios.
 
-### Steps
+
+## Usage
+
+### Available Models
+
+**MaLAware** supports the following models:
+
+- Qwen/Qwen2.5-7B-Instruct
+- meta-llama/Llama-2-7b-hf
+- meta-llama/Llama-3.1-8B-Instruct
+- mistralai/Mistral-7B-Instruct-v0.3
+- tiiuae/falcon-7b
+
+You can choose the model that best suits your needs based on the task at hand.
+
+**Note:** Ensure you have your Hugging Face token for access to gated repositories.
+
+
+### Runnning MaLAware Using Executabel Binary of the Tool
+
+#### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/MaLAware.git
+   cd MaLAware/Binary
+   ```
+
+2. Run the following command in the terminal:
+
+   ```bash
+   ./MALAWARE --input /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
+   ```
+
+**Note**: This may take a few minutes, as all packages are bundled together in the binary along with model details.
+
+### Running MaLAware using python script
+
+#### Steps
 
 1. Clone the repository:
 
@@ -50,10 +106,6 @@ To ensure smooth performance, please make sure of the following:
    pip install -r requirements.txt
    ```
 
-## Usage
-
-### Running MaLAware
-
 To run **MaLAware**, use the following command:
 
 ```bash
@@ -71,20 +123,6 @@ Example:
 python MALAWARE.py --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
 ```
 
-**Note:** Ensure you have your Hugging Face token for access to gated repositories.
-
-### Available Models
-
-**MaLAware** supports the following models:
-
-- Qwen/Qwen2.5-7B-Instruct
-- meta-llama/Llama-2-7b-hf
-- meta-llama/Llama-3.1-8B-Instruct
-- mistralai/Mistral-7B-Instruct-v0.3
-- tiiuae/falcon-7b
-
-You can choose the model that best suits your needs based on the task at hand.
-
 ### Generating Explanations
 
 Once the malware sample is processed, **MaLAware** will generate a detailed explanation of the detected malicious behavior. This explanation will include insights into the potential actions of the malware, what behavior is considered suspicious, and possible mitigations.
@@ -101,6 +139,7 @@ Example output:
 ## Example Output
 
 After processing a sample, the output will be displayed under the heading **`Generated Summary:`**, providing a comprehensive explanation of the malware's actions and highlighting key behaviors.
+
 
 ## Contributing
 
