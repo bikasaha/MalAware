@@ -77,7 +77,7 @@ You can choose the model that best suits your needs based on the task at hand.
 2. Run the following command in the terminal:
 
    ```bash
-   ./MALAWARE --input /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
+   ./MALAWARE --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
    ```
 
 **Note**: This may take a few minutes, as all packages are bundled together in the binary along with model details.
