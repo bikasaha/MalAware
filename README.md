@@ -17,7 +17,7 @@
 
 Before using **MaLAware**, ensure that you have the following installed:
 
-- Python 3.6 or higher
+- Python 3.8
 - `pip` (Python package installer)
 - Required libraries (listed below)
 
@@ -43,8 +43,6 @@ Before using **MaLAware**, ensure that you have the following installed:
    pip install -r requirements.txt
    ```
 
-4. Download the pre-trained models (instructions are in the next section).
-
 ## Usage
 
 ### Running MaLAware
@@ -52,28 +50,29 @@ Before using **MaLAware**, ensure that you have the following installed:
 To run **MaLAware**, use the following command:
 
 ```bash
-python maware.py --input <path_to_malware_sample> --model <model_name> --output <output_path>
+python maware.py --i <path_to_input_json_file> --m <model_name> --q --hf <hugging_face_token>
 ```
 
-- **`--input`**: The path to the malware sample or dataset to analyze.
-- **`--model`**: The name of the LLM to use for analysis (e.g., `Qwen2.5-7B`, `Mistral-7B`, etc.).
-- **`--output`**: The path where the generated explanation will be saved.
+- **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
+- **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
+- **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
+- **`--hf`** argument: Hugging Face authentication token is required.
 
 Example:
 
 ```bash
-python maware.py --input /path/to/sample.exe --model Qwen2.5-7B --output explanation.txt
+python maware.py --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
 ```
 
 ### Available Models
 
 **MaLAware** supports the following models:
 
-- Qwen2.5-7B
-- Llama-2-7B
-- Llama-3.1-8B
-- Mistral-7B
-- Falcon-7B
+- Qwen/Qwen2.5-7B-Instruct
+- meta-llama/Llama-2-7b-hf
+- meta-llama/Llama-3.1-8B-Instruct
+- mistralai/Mistral-7B-Instruct-v0.3
+- tiiuae/falcon-7b
 
 You can choose the model that best suits your needs based on the task at hand.
 
@@ -84,14 +83,14 @@ Once the malware sample is processed, **MaLAware** will generate a detailed expl
 Example output:
 
 ```
-Malware Action: File Modification
-Explanation: The malware attempts to modify system files in the directory C:\Windows\System32. This is indicative of a potential rootkit behavior.
-Recommendations: Block file access to this directory. Perform a system scan to check for other potential infections.
+- **Behavioral Analysis:** The malware allocates memory segments multiple times using `NtAllocateVirtualMemory`, which is common in many types of malware to execute code in memory. It also creates and deletes files, and writes to the registry, indicating that it attempts to persist and modify system settings. The malware also repeatedly searches for specific processes (`mobsync.exe`), which could be an attempt to avoid detection by hiding behind legitimate processes. Additionally, the malware makes multiple attempts to communicate over UDP with multicast addresses, suggesting it might be part of a botnet or attempting to join one.
+- **Network Analysis:** The malware sends numerous UDP packets to broadcast addresses such as `192.168.56.255` and multicast addresses like `224.0.0.252`. These communications could be used for command-and-control purposes or for spreading to other hosts within the local network. The variety of ports used (137, 138, 5355) indicates that the malware is probing for open services on the network.
+- **Functional Intelligence:** The malware is designed to create and delete files, especially those related to temporary and system folders.
 ```
 
 ## Example Output
 
-After processing a sample, the output will be saved to the file specified by the `--output` argument. The output will contain a comprehensive explanation of the malware's actions, highlighting key behaviors and providing recommendations for mitigation.
+After processing a sample, the output will be printed with heading `Generated Summary:` contain a comprehensive explanation of the malware's actions, highlighting key behaviors and providing recommendations for mitigation.
 
 ## Contributing
 
@@ -105,14 +104,14 @@ We welcome contributions to **MaLAware**! If you would like to contribute to the
 
 ## License
 
+This project is currently under review for a conference. The code is not open for redistribution or modification until the review process is complete. 
+
+Once the project is accepted and published, the license will be updated to allow broader use, including release under a permissive open-source license such as **CC BY 4.0** or **MIT**.
+
+Please check back after the review process for updates on the license.
+
+
 **MaLAware** is open-source software released under the MIT License. See [LICENSE](LICENSE) for more information.
-
-## Acknowledgments
-
-We would like to acknowledge the contributions of the following:
-
-- The researchers behind the LLM models used in this project.
-- The cybersecurity community for their continuous effort in fighting malware.
 
 ## Contact
 
