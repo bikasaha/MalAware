@@ -9,7 +9,7 @@
 - Generates detailed explanations of malware behavior.
 - Provides actionable insights for cybersecurity professionals.
 - Uses multiple large language models (LLMs) for performance comparison.
-- Supports easy integration and extension for further research.
+- Supports 4-bit quantization for faster inference with lower resource usage..
 
 ## Installation
 
@@ -33,8 +33,8 @@ Before using **MaLAware**, ensure that you have the following installed:
 2. Create a virtual environment (optional but recommended):
 
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   python3 -m venv malaware
+   source malaware/bin/activate
    ```
 
 3. Install the required dependencies:
@@ -50,7 +50,7 @@ Before using **MaLAware**, ensure that you have the following installed:
 To run **MaLAware**, use the following command:
 
 ```bash
-python maware.py --i <path_to_input_json_file> --m <model_name> --q --hf <hugging_face_token>
+python MALAWARE.py --i <path_to_input_json_file> --m <model_name> --q --hf <hugging_face_token>
 ```
 
 - **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
@@ -61,8 +61,10 @@ python maware.py --i <path_to_input_json_file> --m <model_name> --q --hf <huggin
 Example:
 
 ```bash
-python maware.py --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
+python MALAWARE.py --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
 ```
+
+**Note:** Ensure you have your Hugging Face token for access to gated repositories.
 
 ### Available Models
 
@@ -83,14 +85,15 @@ Once the malware sample is processed, **MaLAware** will generate a detailed expl
 Example output:
 
 ```
-- **Behavioral Analysis:** The malware allocates memory segments multiple times using `NtAllocateVirtualMemory`, which is common in many types of malware to execute code in memory. It also creates and deletes files, and writes to the registry, indicating that it attempts to persist and modify system settings. The malware also repeatedly searches for specific processes (`mobsync.exe`), which could be an attempt to avoid detection by hiding behind legitimate processes. Additionally, the malware makes multiple attempts to communicate over UDP with multicast addresses, suggesting it might be part of a botnet or attempting to join one.
-- **Network Analysis:** The malware sends numerous UDP packets to broadcast addresses such as `192.168.56.255` and multicast addresses like `224.0.0.252`. These communications could be used for command-and-control purposes or for spreading to other hosts within the local network. The variety of ports used (137, 138, 5355) indicates that the malware is probing for open services on the network.
-- **Functional Intelligence:** The malware is designed to create and delete files, especially those related to temporary and system folders.
+- <b>Behavioral Analysis:</b> The malware allocates memory segments multiple times using `NtAllocateVirtualMemory`, which is common in many types of malware to execute code in memory. It also creates and deletes files, and writes to the registry, indicating that it attempts to persist and modify system settings. The malware also repeatedly searches for specific processes (`mobsync.exe`), which could be an attempt to avoid detection by hiding behind legitimate processes. Additionally, the malware makes multiple attempts to communicate over UDP with multicast addresses, suggesting it might be part of a botnet or attempting to join one.
+- <b>Network Analysis:</b> The malware sends numerous UDP packets to broadcast addresses such as `192.168.56.255` and multicast addresses like `224.0.0.252`. These communications could be used for command-and-control purposes or for spreading to other hosts within the local network. The variety of ports used (137, 138, 5355) indicates that the malware is probing for open services on the network.
+- <b>Functional Intelligence:</b> The malware is designed to create and delete files, especially those related to temporary and system folders.
+
 ```
 
 ## Example Output
 
-After processing a sample, the output will be printed with heading `Generated Summary:` contain a comprehensive explanation of the malware's actions, highlighting key behaviors and providing recommendations for mitigation.
+After processing a sample, the output will be displayed under the heading **`Generated Summary:`**, providing a comprehensive explanation of the malware's actions and highlighting key behaviors.
 
 ## Contributing
 
@@ -104,14 +107,9 @@ We welcome contributions to **MaLAware**! If you would like to contribute to the
 
 ## License
 
-This project is currently under review for a conference. The code is not open for redistribution or modification until the review process is complete. 
+This project is currently under review for [MSR 2025 conference](https://2025.msrconf.org/). The code is not open for redistribution or modification until the review process is complete. 
 
-Once the project is accepted and published, the license will be updated to allow broader use, including release under a permissive open-source license such as **CC BY 4.0** or **MIT**.
-
-Please check back after the review process for updates on the license.
-
-
-**MaLAware** is open-source software released under the MIT License. See [LICENSE](LICENSE) for more information.
+Once the project is accepted and published, the license will be updated to allow broader use, including release under a permissive open-source license such as **CC BY 4.0** or **MIT**. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
