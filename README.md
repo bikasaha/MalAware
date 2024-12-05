@@ -91,10 +91,10 @@ You can choose the model that best suits your needs based on the task at hand.
    ./MALAWARE --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
    ```
 
-    - **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
-    - **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
-    - **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
-    - **`--hf`** argument: Hugging Face authentication token is required.
+- **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
+- **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
+- **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
+- **`--hf`** argument: Hugging Face authentication token is required.
 
 **Note**
 - You may need to allow executable permission by running `chmod +x BINARY/MALWARE` command.
@@ -132,10 +132,10 @@ To run **MaLAware**, use the following command:
 python MALAWARE.py --i <path_to_input_json_file> --m <model_name> --q --hf <hugging_face_token>
 ```
 
-    - **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
-    - **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
-    - **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
-    - **`--hf`** argument: Hugging Face authentication token is required.
+- **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
+- **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
+- **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
+- **`--hf`** argument: Hugging Face authentication token is required.
 
 Example:
 
@@ -171,10 +171,10 @@ After processing a sample, the output will be displayed under the heading **`Gen
     ```bash
     docker run --rm -v $(pwd):/app/data malaware --input /app/data/</path/to/input.json> --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>
     ```
-    - **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
-    - **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
-    - **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
-    - **`--hf`** argument: Hugging Face authentication token is required.
+- **`--i`** argument: The path to the raw input JSON file is now mentioned as required.
+- **`--m`** argument: Specifies the model name with a default value (`meta-llama/Llama-3.1-8B-Instruct`).
+- **`--q`** argument: Optional flag for enabling 4-bit quantization for faster inference.
+- **`--hf`** argument: Hugging Face authentication token is required.
 
 ## Contributing
 
