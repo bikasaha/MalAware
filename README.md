@@ -21,6 +21,13 @@ Before using **MaLAware**, ensure that you have the following installed:
 - `pip` (Python package installer)
 - Required libraries (listed below)
 
+
+### **Note**:
+To ensure smooth performance, please make sure of the following:
+
+- **CUDA Support**: For faster inference with GPU, **CUDA-enabled GPUs** are recommended. Ensure that the appropriate **NVIDIA drivers** and **CUDA toolkit** are installed for your GPU, with at least 15 GB of RAM (for quantized models). This will accelerate the execution of models that utilize GPU processing.
+- RAM usage may increase in certain cases, such as with large JSON files, increased context length, and similar scenarios.
+
 ### Steps
 
 1. Clone the repository:
