@@ -16,9 +16,19 @@
 MaLAware/
 ├── Dataset/
 │   ├── GROUND_TRUTH/    # Ground truth of the prepared dataset
-│   └── SANDBOX_REPORT/  # Input sandbox report
+│   │   ├── 1nj..vd.json # Ground truth of 1nj..vd malware
+│   │   ├── rgj..ol.json # Ground truth of rgj..ol malware
+│   │   └── wfj..vd.json # Ground truth of wfj..vd malware
+│   │
+│   ├── SANDBOX_REPORT/  # Input sandbox report
+│   │   ├── 17j..vd.json # Sandbox report of 17j..vd malware
+│   │   ├── plj..sd.json # Sandbox report of plj..sd malware
+│   │   ├── hsy..er.json # Sandbox report of hsy..er malware
+│   │   └── 4bc..9i.json # Sandbox report of 4bc..9i malware
+│   │
 └── fig/                 # Figures
 │   └── MALWARE_LOGO.png # MaLAware logo image
+│ 
 ├── Dockerfile           # Dockerfile to run using docker
 ├── FILTER.py            # Pre-processing module
 ├── INFERENCEMODULE.py   # Inference module
