@@ -16,7 +16,8 @@
 MaLAware/
 ├── fig                 # Figures
 ├── Dockerfile          # Dockerfile to run using docker
-├── FILTER.py           # Pre-processing
+├── FILTER.py           # Pre-processing module
+├── INFERENCEMODULE.py  # Inference module
 ├── LICENSE             # License of the project
 ├── MALAWARE            # Main script to run the project
 ├── README.md           # ReadMe file
@@ -51,6 +52,8 @@ To ensure smooth performance, please make sure of the following:
 
 ## Usage
 
+This repository provides three different ways to use the **MaLAware** tool: as an executable binary, via Docker, and directly using a Python script. Instructions for using the tool through each of these methods are explained in this section.
+
 ### Available Models
 
 **MaLAware** supports the following models:
@@ -68,16 +71,19 @@ You can choose the model that best suits your needs based on the task at hand.
 
 ### Runnning MaLAware Using Executabel Binary of the Tool
 
+**Note:** Due to space limiyt in git, you need to download binary executable from this [link](https://drive.google.com/drive/folders/1jSTCKgAqMj2Dqwhqwfu-UYLieaffpJ8b?usp=sharing).
+
 #### Steps
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/bikasaha/MaLAware.git
-   cd MaLAware/Binary
+   cd MaLAware
    ```
+2. Due to space limitations on Git, please download the binary executable from this [link](https://drive.google.com/drive/folders/1jSTCKgAqMj2Dqwhqwfu-UYLieaffpJ8b?usp=sharing) and place into folder named `BINARY` within the `MaLAware` directory. You may need to create the folder named **BINARY** using `mkdir BINARY` command.
 
-2. Run the following command in the terminal:
+3. Run the following command in the terminal:
 
    ```bash
    ./MALAWARE --i /path/to/input.json --m meta-llama/Llama-3.1-8B-Instruct --q --hf <your_hugging_face_token>

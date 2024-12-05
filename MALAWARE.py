@@ -2,7 +2,7 @@
 
 import argparse
 import json
-from BENCHMARKMODULE import run_llama_inference
+from INFERENCEMODULE import run_llama_inference
 from FILTER import parse_cuckoo_json
 from huggingface_hub import login
 
