@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# python BENCHMARK.py --input test.json --model meta-llama/Llama-3.1-8B-Instruct --hf_token "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" --q
-
-
 import argparse
 import json
 from BENCHMARKMODULE import run_llama_inference

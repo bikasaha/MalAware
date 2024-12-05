@@ -15,20 +15,6 @@ def run_llama_inference(model_name, malware_data, quantization=False):
     # Check for GPU availability
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Timer for tracking performance
-    # initial_start_time = time.time()
-
-    # # File path for the malware dataset
-    # file = "filtered_TRICKBOT.json"
-
-    # # Load malware dataset
-    # with open(file, "r") as f:
-    #     malware_data = json.load(f)
-
-    # Specify model details
-    # model_name="meta-llama/Llama-3.1-8B-Instruct"
-    # model_name = "mistralai/Mistral-7B-Instruct-v0.3"  # Replace with "meta-llama/Llama-3.1-8B-Instruct" if needed
-
     # Enable 4-bit quantization for faster inference
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,  # Use 4-bit precision
@@ -56,8 +42,6 @@ def run_llama_inference(model_name, malware_data, quantization=False):
     if not isinstance(malware_data, str) or len(malware_data.strip()) == 0:
         raise ValueError("Input malware_data must be a non-empty string.")
 
-    # Convert malware data to a single string for analysis
-    # malware_data = json.dumps(malware_data)
 
     # Define the prompt
     prompt = f"""
@@ -139,43 +123,6 @@ def run_llama_inference(model_name, malware_data, quantization=False):
 
     return summary_temp
 
-    # from transformers import AutoTokenizer, AutoModelForCausalLM
-    # import torch
-
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
-    # tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-    # model = AutoModelForCausalLM.from_pretrained(
-    #     model_name,
-    #     device_map="auto",
-    #     torch_dtype=torch.float16 if quantization else torch.float32,
-    #     load_in_4bit=quantization
-    # ).to(device)
-    
-    # # Define prompt
-    # prompt = f"""
-    # You are a cybersecurity expert analyzing malware data. 
-    # Provide a summary including behavioral, network, and functional analysis.
-
-    # JSON Details:
-    # {json.dumps(malware_data)}
-
-    # ### Summary:
-    # """
-    
-    # input_ids = tokenizer(prompt, return_tensors="pt", truncation=True).to(device)
-    # outputs = model.generate(
-    #     input_ids.input_ids,
-    #     max_new_tokens=256,
-    #     temperature=0.7,
-    #     top_k=50,
-    #     top_p=0.9
-    # )
-    # summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    # return summary.strip()
-
-
-
 def evaluate_summary(model_summary, human_summary):
 
     from sentence_transformers import SentenceTransformer, util
@@ -192,21 +139,9 @@ def evaluate_summary(model_summary, human_summary):
     keybert_model = KeyBERT()  # For keyphrase extraction
     rouge = evaluate.load("rouge")
     bleu = evaluate.load("bleu")
-    # gpt2_tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-    # gpt2_model = GPT2LMHeadModel.from_pretrained("gpt2")
 
     # 1. ROUGE
     rouge_scores = rouge.compute(predictions=[model_summary], references=[human_summary])
-
-    # 2. BLEU
-    # BLEU Metric
-    bleu_scores = bleu.compute(
-        predictions=[model_summary],  # Full string for predictions
-        references=[[human_summary]]  # List of lists for references
-    )
-
-    # Output BLEU Score
-    # print("BLEU Scores:", bleu_scores)
 
 
     # 3. BERTScore
@@ -246,7 +181,6 @@ def evaluate_summary(model_summary, human_summary):
         "ROUGE-1": rouge_scores["rouge1"],
         "ROUGE-2": rouge_scores["rouge2"],
         "ROUGE-L": rouge_scores["rougeL"],
-        "BLEU": bleu_scores["bleu"],
         "BERTScore Precision": precision.mean().item(),
         "BERTScore Recall": recall.mean().item(),
         "BERTScore F1": f1.mean().item(),
@@ -259,35 +193,3 @@ def evaluate_summary(model_summary, human_summary):
         "Keyphrase Overlap": keyphrase_overlap,
     }
     return results
-
-    # from evaluate import load as load_metric
-    # from sentence_transformers import SentenceTransformer, util
-    # from keybert import KeyBERT
-
-    # # Metrics
-    # rouge = load_metric("rouge")
-    # bleu = load_metric("bleu")
-    # sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
-    # keybert_model = KeyBERT()
-
-    # # ROUGE and BLEU
-    # rouge_scores = rouge.compute(predictions=[model_summary], references=[human_summary])
-    # bleu_scores = bleu.compute(predictions=[model_summary], references=[[human_summary]])
-
-    # # Cosine Similarity
-    # cosine_similarity = util.pytorch_cos_sim(
-    #     sentence_model.encode(model_summary, convert_to_tensor=True),
-    #     sentence_model.encode(human_summary, convert_to_tensor=True)
-    # ).item()
-
-    # # Keyphrases
-    # keyphrases = keybert_model.extract_keywords(model_summary, keyphrase_ngram_range=(1, 2))
-
-    # # Compile results
-    # return {
-    #     "rouge-1": rouge_scores["rouge1"],
-    #     "rouge-2": rouge_scores["rouge2"],
-    #     "bleu": bleu_scores["bleu"],
-    #     "cosine_similarity": cosine_similarity,
-    #     "keyphrases": keyphrases
-    # }
