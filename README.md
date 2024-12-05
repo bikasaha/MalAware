@@ -52,7 +52,11 @@ To ensure smooth performance, please make sure of the following:
 
 ## Usage
 
-This repository provides three different ways to use the **MaLAware** tool: as an executable binary, via Docker, and directly using a Python script. Instructions for using the tool through each of these methods are explained in this section.
+This repository provides three different ways to use the **MaLAware** tool: 
+
+- as an executable binary
+- via Docker
+- directly using a Python script. Instructions for using the tool through each of these methods are explained in this section.
 
 ### Available Models
 
