@@ -54,7 +54,9 @@ This repository provides three different ways to use the **MaLAware** tool:
 
 - as an executable binary
 - via Docker
-- directly using a Python script. Instructions for using the tool through each of these methods are explained in this section.
+- directly using a Python script.
+
+Instructions for using the tool through each of these methods are explained in this section.
 
 ### Available Models
 
