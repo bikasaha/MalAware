@@ -26,7 +26,7 @@ MaLAware/
 ├── MALAWARE.py          # Main script to run the project
 ├── README.md            # ReadMe file
 ├── requirement.txt      # Requirement file
-└── test.json            # Test input file
+└── test.json            # Test input file (This is provided as a sample. The sandbox reports can be found in the DATASET/SANDBOX_REPORT/ directory)
 
 ```
 
@@ -83,7 +83,7 @@ You can choose the model that best suits your needs based on the task at hand.
    git clone https://github.com/bikasaha/MaLAware.git
    cd MaLAware
    ```
-2. Due to space limitations on Git, please download the binary executable from this [link](https://drive.google.com/drive/folders/1jSTCKgAqMj2Dqwhqwfu-UYLieaffpJ8b?usp=sharing) and place into folder named `BINARY` within the `MaLAware` directory. You may need to create the folder named **BINARY** using `mkdir BINARY` command.
+2. Due to space limitations on Git, please download the binary executable from this [link](https://drive.google.com/drive/folders/1jSTCKgAqMj2Dqwhqwfu-UYLieaffpJ8b?usp=sharing) and place into folder named `BINARY` within the `MaLAware` directory. You may need to create the folder named **BINARY** using `mkdir BINARY` command. GO to BINARY folder using `cd BINARY`.
 
 3. Run the following command in the terminal:
 
