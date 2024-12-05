@@ -58,6 +58,8 @@ This repository provides three different ways to use the **MaLAware** tool:
 
 Instructions for using the tool through each of these methods are explained in this section.
 
+**Note:** The steps for `Running MaLAware using the Python script` have been fully tested and are working smoothly. However, the Docker and binary tool may encounter some errors, which are currently being addressed.
+
 ### Available Models
 
 **MaLAware** supports the following models:
